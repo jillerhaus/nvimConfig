@@ -28,7 +28,7 @@ return {
   	opts = {
   		ensure_installed = {
   			"lua-language-server", "stylua",
-  		  "prettier", "clangd", "clangd-format",
+  		  "prettier", "clangd", "clang-format"
   		},
   	},
   },
