@@ -70,7 +70,7 @@ return {
   		ensure_installed = {
   			"lua-language-server", "stylua",
   		  "prettier", "clangd", "clang-format",
-        "codelldb", "pyright", 
+        "codelldb", "pyright",
   		},
   	},
   },
