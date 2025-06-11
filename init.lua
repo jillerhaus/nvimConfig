@@ -681,7 +681,23 @@ require('lazy').setup({
             },
           },
         },
+
         dockerls = {},
+
+        arduino_language_server = {
+          capabilities = {
+            textDocument = { semanticTokens = vim.NIL },
+            workspace = { semanticTokens = vim.NIL },
+          },
+          cmd = {
+            'arduino-language-server',
+            '-cli-config',
+            '/home/johannes/.arduino15/arduino-cli.yaml',
+            '-fqbn',
+            'arduino:megaavr:nona4809',
+          },
+          filetypes = { 'arduino' },
+        },
         -- rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
@@ -690,7 +706,6 @@ require('lazy').setup({
         --
         -- But for many setups, the LSP (`ts_ls`) will work just fine
         -- ts_ls = {},
-        --
 
         lua_ls = {
           -- cmd = { ... },
