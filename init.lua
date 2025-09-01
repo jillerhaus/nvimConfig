@@ -98,6 +98,13 @@ vim.g.have_nerd_font = true
 -- NOTE: You can change these options as you wish!
 --  For more options, you can see `:help option-list`
 
+-- Tabs and spaces
+vim.o.tabstop = 4 -- Number of spaces a tab represesnts
+vim.o.shiftwidth = 4 -- Number of spaces for each indentation
+vim.o.expandtab = true -- Convert tabs to spaces
+vim.o.smartindent = true -- Automatically indent new lines
+vim.o.wrap = true -- Enable line wrapping
+
 -- Make line numbers default
 vim.o.number = true
 -- You can also add relative line numbers, to help with jumping.
