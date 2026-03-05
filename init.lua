@@ -965,31 +965,53 @@ require('lazy').setup({
     branch = 'main',
     -- [[ Configure Treesitter ]] See `:help nvim-treesitter-intro`
     config = function()
-      local parsers = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' }
-      -- local parsers = {
-      --   'arduino',
-      --   'bash',
-      --   'c',
-      --   'cmake',
-      --   'cpp',
-      --   'csv',
-      --   'cuda',
-      --   'diff',
-      --   'gitcommit',
-      --   'gitignore',
-      --   'html',
-      --   'lua',
-      --   'luadoc',
-      --   'make',
-      --   'markdown',
-      --   'markdown_inline',
-      --   'python',
-      --   'ssh_config',
-      --   'query',
-      --   'vim',
-      --   'vimdoc',
-      --   'xml',
-      --   'yaml',  }
+      -- local parsers = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' }
+      local parsers = {
+        'arduino',
+        'bash',
+        'c',
+        'cmake',
+        'cpp',
+        'csv',
+        'cuda',
+        'diff',
+        'gitcommit',
+        'gitignore',
+        'html',
+        'lua',
+        'luadoc',
+        'make',
+        'markdown',
+        'markdown_inline',
+        'python',
+        'ssh_config',
+        'query',
+        'vim',
+        'vimdoc',
+        'xml',
+        'yaml',
+      }
+      opts = {
+        auto_install = true,
+        highlight = {
+          enable = true,
+          -- Some languages depend on vim's regex highlighting system (such as Ruby) for indent rules.
+          --  If you are experiencing weird indenting issues, add the language to
+          --  the list of additional_vim_regex_highlighting and disabled languages for indent.
+          additional_vim_regex_highlighting = { 'ruby' },
+        },
+        indent = { enable = true, disable = { 'ruby' } },
+        incremental_selection = {
+          enable = true,
+          keymaps = {
+            init_selection = '<c-space>',
+            node_incremental = '<c-space>',
+            scope_incremental = '<c-s>',
+            node_decremental = '<c-backspace>',
+          },
+        },
+      }
+      require('nvim-treesitter').setup(opts)
       require('nvim-treesitter').install(parsers)
       vim.api.nvim_create_autocmd('FileType', {
         callback = function(args)
